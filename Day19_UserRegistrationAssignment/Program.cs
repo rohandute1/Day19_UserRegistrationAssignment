@@ -17,14 +17,35 @@ namespace Day19_UserRegistrationAssignment
             Console.WriteLine("Enter your last name:");
             string lastName = Console.ReadLine();
 
-            // Validate the first name and last name using regular expressions
-            if (IsValidFirstName(firstName) && IsValidLastName(lastName))
+            Console.WriteLine("Enter your email address:");
+            string email = Console.ReadLine();
+
+           
+            if (IsValidFirstName(firstName)) 
             {
-                Console.WriteLine("Valid first name and last name entered.");
+                Console.WriteLine("Valid first name.");
             }
             else
             {
-                Console.WriteLine("Invalid first name or last name entered.");
+                Console.WriteLine("Invalid first name.");
+            }
+
+            if (IsValidLastName(lastName)) 
+            {
+                Console.WriteLine("Valid last name."); 
+            }
+            else
+            {
+                Console.WriteLine("Invalid last name.");
+            }
+
+            if (IsValidEmail(email)) 
+            {
+                Console.WriteLine("Valid email address entered.");
+            }
+            else
+            {
+                Console.WriteLine("Invalid email address entered.");
             }
             Console.ReadLine();
         }
@@ -45,6 +66,15 @@ namespace Day19_UserRegistrationAssignment
 
             // Check if the last name matches the pattern
             return Regex.IsMatch(lastName, pattern);
+        }
+
+        static bool IsValidEmail(string email)
+        {
+            // Regular expression pattern to match the email address condition
+            string pattern = @"^[a-zA-Z0-9]+(?:\.[a-zA-Z0-9]+)*@[a-zA-Z0-9]+(?:\.[a-zA-Z0-9]+)*(?:\.[a-zA-Z]{2,})$";
+
+            // Check if the email address matches the pattern
+            return Regex.IsMatch(email, pattern);
         }
     }
 }
