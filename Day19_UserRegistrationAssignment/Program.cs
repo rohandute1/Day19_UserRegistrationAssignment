@@ -20,8 +20,10 @@ namespace Day19_UserRegistrationAssignment
             Console.WriteLine("Enter your email address:");
             string email = Console.ReadLine();
 
-           
-            if (IsValidFirstName(firstName)) 
+            Console.WriteLine("Enter your mobile number:");
+            string mobileNumber = Console.ReadLine();
+
+            if (IsValidFirstName(firstName))
             {
                 Console.WriteLine("Valid first name.");
             }
@@ -30,16 +32,16 @@ namespace Day19_UserRegistrationAssignment
                 Console.WriteLine("Invalid first name.");
             }
 
-            if (IsValidLastName(lastName)) 
+            if (IsValidLastName(lastName))
             {
-                Console.WriteLine("Valid last name."); 
+                Console.WriteLine("Valid last name.");
             }
             else
             {
                 Console.WriteLine("Invalid last name.");
             }
 
-            if (IsValidEmail(email)) 
+            if (IsValidEmail(email))
             {
                 Console.WriteLine("Valid email address entered.");
             }
@@ -47,6 +49,16 @@ namespace Day19_UserRegistrationAssignment
             {
                 Console.WriteLine("Invalid email address entered.");
             }
+
+            if (IsValidMobileNumber(mobileNumber))
+            {
+                Console.WriteLine("Valid mobile number entered.");
+            }
+            else
+            {
+                Console.WriteLine("Invalid mobile number entered.");
+            }
+
             Console.ReadLine();
         }
 
@@ -75,6 +87,15 @@ namespace Day19_UserRegistrationAssignment
 
             // Check if the email address matches the pattern
             return Regex.IsMatch(email, pattern);
+        }
+
+        static bool IsValidMobileNumber(string mobileNumber)
+        {
+            // Regular expression pattern to match the mobile number condition
+            string pattern = @"^91 \d{10}$";
+
+            // Check if the mobile number matches the pattern
+            return Regex.IsMatch(mobileNumber, pattern);
         }
     }
 }
